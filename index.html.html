@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photon - Next Gen Visuals</title>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+
+        body {
+            background-color: #0b0d17;
+            color: #e2e8f0;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* --- NAVBAR --- */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(11, 13, 23, 0.8);
+            backdrop-filter: blur(12px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        nav {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 18px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: 800;
+            color: #fff;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo i {
+            color: #00f2fe;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #94a3b8;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #00f2fe;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 120px 20px 60px 20px;
+            background: radial-gradient(circle at center, rgba(0, 242, 254, 0.12) 0%, rgba(11, 13, 23, 1) 70%);
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 54px;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 20px;
+            max-width: 750px;
+            line-height: 1.2;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(90deg, #00f2fe, #4facfe);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: #94a3b8;
+            max-width: 550px;
+            margin-bottom: 35px;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(90deg, #00f2fe, #4facfe);
+            color: #0b0d17;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 20px rgba(0, 242, 254, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(0, 242, 254, 0.5);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background 0.3s, border-color 0.3s;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: #00f2fe;
+        }
+
+        /* --- FEATURES SECTION --- */
+        .features {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 80px 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 32px;
+            color: #fff;
+            margin-bottom: 50px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 30px;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(0, 242, 254, 0.4);
+        }
+
+        .feature-card i {
+            font-size: 30px;
+            color: #00f2fe;
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            font-size: 20px;
+            color: #fff;
+            margin-bottom: 12px;
+        }
+
+        .feature-card p {
+            color: #94a3b8;
+            font-size: 14px;
+        }
+
+        /* --- GALLERY / SHOWCASE SECTION --- */
+        .gallery {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px 20px 80px 20px;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-item {
+            height: 220px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #1e293b, #0f172a);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 40px;
+            color: rgba(0, 242, 254, 0.5);
+            transition: color 0.3s, transform 0.3s;
+        }
+
+        .gallery-item:hover {
+            color: #00f2fe;
+            transform: scale(1.02);
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 40px 20px;
+            text-align: center;
+            color: #64748b;
+            font-size: 14px;
+        }
+
+        /* Responsive Breakpoint */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 38px;
+            }
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header / Navbar -->
+    <header>
+        <nav>
+            <div class="logo">
+                <i class="fa-solid fa-bolt"></i> PHOTON
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#gallery">Showcase</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <h1>Illuminate Your Digital Experience with <span>Photon</span></h1>
+        <p>A lightweight, high-speed framework designed to build responsive modern web applications effortless and ultra-fast.</p>
+        <div class="hero-btns">
+            <a href="#features" class="btn-primary">Get Started</a>
+            <a href="#gallery" class="btn-secondary">Explore Work</a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <h2 class="section-title">Core Capabilities</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <i class="fa-solid fa-gauge-high"></i>
+                <h3>Ultra Fast Speed</h3>
+                <p>Engineered for speed and smooth performance across all mobile and desktop browsers.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fa-solid fa-mobile-screen-button"></i>
+                <h3>Fully Responsive</h3>
+                <p>Fluid grid layout that scales seamlessly to fit smartphones, tablets, and wide screens.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fa-solid fa-shield-halved"></i>
+                <h3>Modern Security</h3>
+                <p>Built-in protection standards ensuring safe and resilient data processing.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery / Showcase Section -->
+    <section class="gallery" id="gallery">
+        <h2 class="section-title">Visual Showcase</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item"><i class="fa-solid fa-atom"></i></div>
+            <div class="gallery-item"><i class="fa-solid fa-eye"></i></div>
+            <div class="gallery-item"><i class="fa-solid fa-cubes"></i></div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Photon Inc. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
